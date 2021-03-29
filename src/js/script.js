@@ -62,6 +62,12 @@
       console.log('templates:', templates);
     },
   };
+  class Product {
+    constructor(){
+      const thisProduct = this;
 
+      console.log('new product:', thisProduct);
+    }
+  }
   app.init();
 }
