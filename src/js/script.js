@@ -144,7 +144,7 @@
       // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData', formData);
-    
+      
       // set price to default price
       let price = thisProduct.data.price;
     
@@ -160,21 +160,17 @@
           const option = param.options[optionId];
           console.log(optionId, option);
 
-          // check if there is param with a name of paramId in formData and if it includes optionId
-          if(formData[paramId] && formData[paramId].includes(optionId)) {
-            // check if the option is not default
-            if(????) {
-              // add option price to price variable
-            }
-          } else {
-            // check if the option is default
-            if(????) {
-              // reduce price variable
-            }
+          if (formData[paramId].includes(optionId))
+          {
+              if (!option.default){
+                  price += option.price; 
+              }
           }
+          else if (option.default){
+            price -= option.price
+          }          
 
-       }
-        
+        }        
       }
     
       // update calculated price in the HTML
