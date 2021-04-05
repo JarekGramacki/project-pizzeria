@@ -90,6 +90,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
 
@@ -162,14 +163,17 @@
 
           if (formData[paramId].includes(optionId))
           {
-              if (!option.default){
-                  price += option.price; 
-              }
+            if (!option.default){
+              price += option.price; 
+            }
           }
           else if (option.default){
-            price -= option.price
+            price -= option.price;
           }          
-
+          const optionImage = thisProduct.imageWrapper.querySelector(paramId-optionId);
+          if(optionImage){
+            
+          }
         }        
       }
     
