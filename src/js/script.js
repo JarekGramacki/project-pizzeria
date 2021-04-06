@@ -63,6 +63,7 @@
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
       thisProduct.processOrder();
+      thisProduct.initAmountWidget();
       console.log('products:', thisProduct);
     }
 
@@ -91,6 +92,7 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget)
     }
 
 
@@ -119,7 +121,7 @@
 
     initOrderForm(){
       const thisProduct = this;
-      console.log('init order form:', thisProduct);
+      
       
       thisProduct.form.addEventListener('submit', function(event){
         event.preventDefault();
@@ -144,7 +146,7 @@
     
       // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('formData', formData);
+      
       
       // set price to default price
       let price = thisProduct.data.price;
@@ -153,8 +155,7 @@
       for(let paramId in thisProduct.data.params) {
         // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
         const param = thisProduct.data.params[paramId];
-        console.log(paramId, param);
-    
+       
         // for every option in this category
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
@@ -189,7 +190,24 @@
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
+
+    initAmountWidget(){
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new AmoumtWidget(thisProduct.amountWidget);
+    }
+
   }
+
+  class AmoumtWidget {
+    constructor(element){
+      const thisWidget = this;
+
+      console.log('AmountWidget:', thisWidget);
+      console.log('constructor arguments:', element);
+    }
+  }
+
   const app = {
     initData: function(){
       const thisApp = this;
