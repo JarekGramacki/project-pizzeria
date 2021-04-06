@@ -194,12 +194,12 @@
     initAmountWidget(){
       const thisProduct = this;
 
-      thisProduct.amountWidget = new AmoumtWidget(thisProduct.amountWidget);
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
     }
 
   }
 
-  class AmoumtWidget {
+  class AmountWidget {
     constructor(element){
       const thisWidget = this;
 
