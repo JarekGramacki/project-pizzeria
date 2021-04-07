@@ -64,7 +64,7 @@
       thisProduct.initOrderForm();
       thisProduct.processOrder();
       thisProduct.initAmountWidget();
-      thisWidget.getElements(element);
+      
       console.log('products:', thisProduct);
     }
 
@@ -96,15 +96,7 @@
       thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
 
-    getElements(element){
-      const thisWidget = this;
     
-      thisWidget.element = element;
-      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-    }
-
     initAccordion(){
       const thisProduct = this;
   
@@ -205,15 +197,32 @@
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
     }
 
+    
+
   }
 
   class AmountWidget {
     constructor(element){
       const thisWidget = this;
 
+      thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
+
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
-    }
+      }
+
+    getElements(element){
+      const thisWidget = this;
+      
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+      }  
+
+
+    
 
     setValue(value){
       const thisWidget = this;
@@ -221,12 +230,17 @@
       const newValue = parseInt(value);
 
       /* TODO: Add validation*/
+      if(thisWidget.value !== newValue && !isNaN(newValue)){
+        thisWidget.value = newValue;
+      }
 
       thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value;
     }
 
   }
+
+
 
   const app = {
     initData: function(){
