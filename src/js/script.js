@@ -64,6 +64,7 @@
       thisProduct.initOrderForm();
       thisProduct.processOrder();
       thisProduct.initAmountWidget();
+      thisWidget.getElements(element);
       console.log('products:', thisProduct);
     }
 
@@ -92,9 +93,17 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
-      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget)
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
 
+    getElements(element){
+      const thisWidget = this;
+    
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
 
     initAccordion(){
       const thisProduct = this;
@@ -164,26 +173,25 @@
           const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
          
           if (optionSelected)
-            {
-              if (!option.default){
+          {
+            if (!option.default){
               price += option.price; 
-              }
             }
-            else if (option.default){
-              price -= option.price;
-            }          
+          }
+          else if (option.default){
+            price -= option.price;
+          }          
           
           if(optionImage)
-           {
-             if (optionSelected){
-               optionImage.classList.add(classNames.menuProduct.imageVisible);
-             }
-             else if (!optionSelected) {
-               optionImage.classList.remove(classNames.menuProduct.imageVisible);
-               
-             }
-            
+          {
+            if (optionSelected){
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
             }
+            else if (!optionSelected) {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
+            
+          }
         }        
       }
     
@@ -206,6 +214,18 @@
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
     }
+
+    setValue(value){
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      /* TODO: Add validation*/
+
+      thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;
+    }
+
   }
 
   const app = {
