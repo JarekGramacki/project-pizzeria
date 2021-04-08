@@ -258,6 +258,7 @@
       });
 
     }
+
     announce(){
       const thisWidget = this;
 
