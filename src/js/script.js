@@ -225,6 +225,7 @@
       /*multypy price by amount */
       price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
+      thisProduct.priceSingle = price;
       thisProduct.priceElem.innerHTML = price;
     }
 
@@ -248,9 +249,14 @@
 
       thisProduct.id = id;
       thisProduct.name = name;
-      thisProduct.amount = amount; 
+      thisProduct.amount = amount;
+      thisProduct.priceSingle = priceSingle;
+      thisProduct.price = price;  
 
-      const productSummary = {};
+      const productSummary = {
+        params()
+      }
+      
     }
   }
 
