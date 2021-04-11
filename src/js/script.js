@@ -70,7 +70,7 @@
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
-      defaultMax: 9,
+      defaultMax: 10,
     }, // CODE CHANGED
     // CODE ADDED START
     cart: {
@@ -173,6 +173,7 @@
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
      
     }
@@ -235,7 +236,22 @@
         thisProduct.processOrder();
       });
     }
-  
+
+    addToCart(){
+      const thisProduct = this;
+
+      app.cart.add(thisProduct);
+    }
+
+    preperareCartProduct(){
+      const thisProduct = this;
+
+      thisProduct.id = id;
+      thisProduct.name = name;
+      thisProduct.amount = amount; 
+
+      const productSummary = {};
+    }
   }
 
   class AmountWidget {
@@ -330,9 +346,12 @@
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
 
-
     }
-      
+    add(menuProduct){
+      //const thisCart = this;
+
+      console.log('adding product', menuProduct);
+    }  
   }
 
   const app = {
