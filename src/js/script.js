@@ -241,23 +241,75 @@
     addToCart(){
       const thisProduct = this;
 
-      app.cart.add(thisProduct);
+      app.cart.add(thisProduct.prepareCartProduct());
     }
 
-    preperareCartProduct(){
+    prepareCartProduct(){
       const thisProduct = this;
 
-      thisProduct.id = id;
-      thisProduct.name = name;
-      thisProduct.amount = amount;
-      thisProduct.priceSingle = priceSingle;
-      thisProduct.price = price;  
-
       const productSummary = {
-        params()
-      }
-      
+        id: thisProduct.id,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.priceElem.innerHTML, 
+     
+      };
+      return productSummary;
     }
+    
+    prepareCartProductParams(){
+      const thisProduct = this;
+    
+      // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      
+      
+      // set price to default price
+      let price = thisProduct.data.price;
+    
+      // for every category (param)...
+      for(let paramId in thisProduct.data.params) {
+        // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+        const param = thisProduct.data.params[paramId];
+       
+        // for every option in this category
+        for(let optionId in param.options) {
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId];
+          const optionSelected = formData[paramId].includes(optionId);
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+         
+          if (optionSelected)
+          {
+            if (!option.default){
+              price += option.price; 
+            }
+          }
+          else if (option.default){
+            price -= option.price;
+          }          
+          
+          if(optionImage)
+          {
+            if (optionSelected){
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            }
+            else if (!optionSelected) {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
+            
+          }
+        }        
+      }
+      /*multypy price by amount */
+      price *= thisProduct.amountWidget.value;
+      // update calculated price in the HTML
+      thisProduct.priceSingle = price;
+      thisProduct.priceElem.innerHTML = price;
+    }
+
+
   }
 
   class AmountWidget {
