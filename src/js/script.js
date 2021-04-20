@@ -225,6 +225,7 @@
       price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
       thisProduct.priceSingle = price;
+
       thisProduct.priceElem.innerHTML = price;
     }
 
@@ -292,9 +293,9 @@
     constructor(element){
       const thisWidget = this;
 
-      thisWidget.getElements(element);
-      thisWidget.initActions();
+      thisWidget.getElements(element); 
       thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
     } 
 
     getElements(element){
@@ -316,10 +317,11 @@
       /* TODO: Add validation*/
       if(thisWidget.value !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax){
         thisWidget.value = newValue;
+        thisWidget.announce();
       }
 
       thisWidget.input.value = thisWidget.value;
-      thisWidget.announce();
+      
     }
 
     initActions(){
@@ -331,12 +333,12 @@
 
       thisWidget.linkDecrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.setValue(--thisWidget.value);
+        thisWidget.setValue(thisWidget.value - 1);
       });
 
       thisWidget.linkIncrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.setValue(++thisWidget.value);
+        thisWidget.setValue(thisWidget.value + 1);
       });
 
     }
@@ -344,7 +346,9 @@
     announce(){
       const thisWidget = this;
 
-      const event = new Event('updated');
+      const event = new CustomEvent('updated', {
+        bubbles: true
+      });
       thisWidget.element.dispatchEvent(event);
     }
   }
@@ -367,6 +371,10 @@
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = element.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = element.querySelector(select.cart.productList);
+      thisCart.dom.deliveryFee = element.querySelector(select.cart.deliveryFee);
+      thisCart.dom.subTotalPrice = element.querySelector(select.cart.subTotalPrice);
+      thisCart.dom.totalPrice = element.querySelectorAll(select.cart.totalPrice);
+      thisCart.dom.totalNumber = element.querySelector(select.cart.totalNumber);
     }
 
     initActions(){
@@ -375,6 +383,10 @@
       thisCart.dom.toggleTrigger.addEventListener('click',function(){
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
+
+      thisCart.dom.productList.addEventListener('updated', function(){
+        thisCart.update();
+      })
 
     }
 
@@ -394,7 +406,8 @@
       cartContainer.appendChild(generatedDOM);
 
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
-      
+
+      thisCart.update();
     }
 
     update(){
@@ -402,16 +415,31 @@
        
       thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
       thisCart.totalNumber = 0;
-      thisCart.subTotalPrice = 0;
+      thisCart.subtotalPrice = 0;
+      thisCart.totalPrice = thisCart.deliveryFee + thisCart.subtotalPrice;
 
       for(let product of thisCart.products){
         thisCart.totalNumber += product.amount;
-        thisCart.subTotalPrice += product.price;
-        }
-        if(thisCart.subTotalPrice != 0){
-        thisCart.totalPrice = thisCart.deliveryFee + thisCart.subTotalPrice;
-        }
+        thisCart.subtotalPrice += product.price;
+      }
+        if(thisCart.totalPrice !== 0){
+        thisCart.totalPrice = thisCart.deliveryFee + thisCart.subtotalPrice;
+      } else{
+        thisCart.deliveryFee = 0
+      }
+
+      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
+      thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+
+     
     }
+      
+      
+      
+
+    
   }
 
   class CartProduct{
@@ -427,6 +455,7 @@
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
+      
     }
 
     getElements(element){
@@ -495,7 +524,7 @@
 
   
   app.init();
-
+  
     
 }
 
