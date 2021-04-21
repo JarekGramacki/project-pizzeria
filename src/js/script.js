@@ -422,10 +422,10 @@
         thisCart.subTotalPrice = thisCart.subTotalPrice + product.price;
       }
       
-      thisCart.totalPrice = thisCart.subTotalPrice + thisCart.deliveryFee;
       
-      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
       thisCart.dom.subTotalPrice.innerHTML = thisCart.subTotalPrice;
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+      thisCart.totalPrice = thisCart.subTotalPrice + thisCart.deliveryFee;
 
       if(thisCart.subTotalPrice > 0){
         thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
