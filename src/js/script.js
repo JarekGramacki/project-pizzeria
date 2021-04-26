@@ -77,8 +77,15 @@
       defaultDeliveryFee: 20,
     },
     // CODE ADDED END
+    db: {
+      url: '//localhost:3131',
+      product: 'product',
+      order: 'order',
+    },
   };
-  
+
+ 
+
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
     // CODE ADDED START
@@ -398,16 +405,16 @@
     }
 
     remove(product){
-        console.log('4. [R] Cart - usuwamy produkt (front+back):', product);
-        const thisCart = this;
-        const cartContainer = thisCart.dom.productList;
+      console.log('4. [R] Cart - usuwamy produkt (front+back):', product);
+      const thisCart = this;
+      const cartContainer = thisCart.dom.productList;
 
-        console.log('5. [R] Cart - usuwamy produkt z frontendu (ui) / z drzewa dom');
-        cartContainer.removeChild(product.dom.wrapper);
+      console.log('5. [R] Cart - usuwamy produkt z frontendu (ui) / z drzewa dom');
+      cartContainer.removeChild(product.dom.wrapper);
         
-        console.log('6. [R] Cart - usuwamy produkt z koszyka - z listy obiektów');
-        thisCart.products.splice(thisCart.products.indexOf(product), 1);
-        thisCart.update();
+      console.log('6. [R] Cart - usuwamy produkt z koszyka - z listy obiektów');
+      thisCart.products.splice(thisCart.products.indexOf(product), 1);
+      thisCart.update();
     }
 
 
@@ -546,7 +553,22 @@
     initData: function(){
       const thisApp = this;
 
-      thisApp.data = dataSource;
+      thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.product;
+  
+    fetch(url)
+      .then(function(rawResponse){
+        return rawResponse.json();
+      })
+      .then(function(parsedResponse){
+        console.log(parsedResponse)
+    
+        /*save parasedResponse as thisApp.data.products */
+        thisApp.data.products = parsedResponse;
+        /* execute initMenu method */
+        thisApp.initMenu();
+      });
+    console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
 
     initMenu: function() {
@@ -554,7 +576,7 @@
       
       
       for(let productData in thisApp.data.products){
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
 
@@ -575,7 +597,7 @@
       
 
       thisApp.initData();
-      thisApp.initMenu();
+      
       
     },
     
