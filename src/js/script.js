@@ -556,19 +556,19 @@
       thisApp.data = {};
       const url = settings.db.url + '/' + settings.db.product;
   
-    fetch(url)
-      .then(function(rawResponse){
-        return rawResponse.json();
-      })
-      .then(function(parsedResponse){
-        console.log(parsedResponse)
-    
-        /*save parasedResponse as thisApp.data.products */
-        thisApp.data.products = parsedResponse;
-        /* execute initMenu method */
-        thisApp.initMenu();
-      });
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
+      fetch(url)
+        .then(function(rawResponse){
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse){
+          console.log(parsedResponse);
+      
+          /*save parasedResponse as thisApp.data.products */
+          thisApp.data.products = parsedResponse;
+          /* execute initMenu method */
+          thisApp.initMenu();
+        });
+      console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
 
     initMenu: function() {
