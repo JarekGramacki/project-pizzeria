@@ -385,6 +385,7 @@
       thisCart.dom.subTotalPrice = element.querySelector(select.cart.subtotalPrice);
       thisCart.dom.totalPrice = element.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = element.querySelector(select.cart.totalNumber);
+      thisCart.dom.form = element.querySelector(select.cart.form);
     }
 
     initActions(){
@@ -401,6 +402,10 @@
       thisCart.dom.productList.addEventListener('remove', function(event){
         console.log('3. [R] Cart - złapaliśmy event z CardProduct:', event);
         thisCart.remove(event.detail.cartProduct);        
+      });
+
+      thisCart.dom.form.addEventListener('submit', function(event){
+        event.preventDefault();
       });
     }
 
