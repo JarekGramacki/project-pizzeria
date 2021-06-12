@@ -1,13 +1,13 @@
-import { settings, select } from "./settings.js";
-import Product from "./componenets/Product.js";
-import Cart from "./components/Cart.js";
+import { settings, select } from './settings.js';
+import Product from './componenets/Product.js';
+import Cart from './components/Cart.js';
 
 const app = {
   initData: function () {
     const thisApp = this;
 
     thisApp.data = {};
-    const url = settings.db.url + "/" + settings.db.product;
+    const url = settings.db.url + '/' + settings.db.product;
 
     fetch(url)
       .then(function (rawResponse) {
@@ -21,7 +21,7 @@ const app = {
         /* execute initMenu method */
         thisApp.initMenu();
       });
-    console.log("thisApp.data", JSON.stringify(thisApp.data));
+    console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
 
   initMenu: function () {
@@ -44,11 +44,11 @@ const app = {
 
   init: function () {
     const thisApp = this;
-    console.log("*** App starting ***");
-    console.log("thisApp:", thisApp);
-    console.log("classNames:", classNames);
-    console.log("settings:", settings);
-    console.log("templates:", templates);
+    console.log('*** App starting ***');
+    console.log('thisApp:', thisApp);
+    //console.log('classNames:', classNames);
+    console.log('settings:', settings);
+    //console.log('templates:', templates);
 
     thisApp.initData();
   },

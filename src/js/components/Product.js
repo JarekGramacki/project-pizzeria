@@ -62,14 +62,14 @@ class Product {
     /* find the clickable trigger (the element that should react to clicking) */
 
     /* START: add event listener to clickable trigger on event click */
-    thisProduct.accordionTrigger.addEventListener("click", function (event) {
+    thisProduct.accordionTrigger.addEventListener('click', function (event) {
       /* prevent default action for event */
       event.preventDefault();
       /* find active product (product that has active class) */
-      const activeProduct = document.querySelector(".product.active");
+      const activeProduct = document.querySelector('.product.active');
       /* if there is active product and it's not thisProduct.element, remove class active from it */
       if (activeProduct !== null && activeProduct !== thisProduct.element) {
-        activeProduct.classList.remove("active");
+        activeProduct.classList.remove('active');
       }
       /* toggle active class on thisProduct.element */
       thisProduct.element.classList.toggle(
@@ -81,18 +81,18 @@ class Product {
   initOrderForm() {
     const thisProduct = this;
 
-    thisProduct.form.addEventListener("submit", function (event) {
+    thisProduct.form.addEventListener('submit', function (event) {
       event.preventDefault();
       thisProduct.processOrder();
     });
 
     for (let input of thisProduct.formInputs) {
-      input.addEventListener("change", function () {
+      input.addEventListener('change', function () {
         thisProduct.processOrder();
       });
     }
 
-    thisProduct.cartButton.addEventListener("click", function (event) {
+    thisProduct.cartButton.addEventListener('click', function (event) {
       event.preventDefault();
       thisProduct.processOrder();
       thisProduct.addToCart();
@@ -119,7 +119,7 @@ class Product {
         const option = param.options[optionId];
         const optionSelected = formData[paramId].includes(optionId);
         const optionImage = thisProduct.imageWrapper.querySelector(
-          "." + paramId + "-" + optionId
+          '.' + paramId + '-' + optionId
         );
 
         if (optionSelected) {
@@ -151,7 +151,7 @@ class Product {
     const thisProduct = this;
 
     thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-    thisProduct.amountWidgetElem.addEventListener("updated", function () {
+    thisProduct.amountWidgetElem.addEventListener('updated', function () {
       thisProduct.processOrder();
     });
   }

@@ -36,7 +36,7 @@ class CartProduct {
     thisCartProduct.amountWidget = new AmountWidget(
       thisCartProduct.dom.amountWidget
     );
-    thisCartProduct.dom.amountWidget.addEventListener("updated", function () {
+    thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
       thisCartProduct.price =
         thisCartProduct.amount * thisCartProduct.priceSingle;
@@ -45,10 +45,10 @@ class CartProduct {
   }
 
   remove() {
-    console.log("1. [R] CartProduct - kliknieto remove na:", this);
+    console.log('1. [R] CartProduct - kliknieto remove na:', this);
     const thisCartProduct = this;
 
-    const event = new CustomEvent("remove", {
+    const event = new CustomEvent('remove', {
       bubbles: true,
       detail: {
         cartProduct: thisCartProduct,
@@ -56,7 +56,7 @@ class CartProduct {
     });
 
     console.log(
-      "2. [R] CartProduct - wysla event z sobą (ref) w detail.cartProduct:",
+      '2. [R] CartProduct - wysla event z sobą (ref) w detail.cartProduct:',
       event
     );
     thisCartProduct.dom.wrapper.dispatchEvent(event);
@@ -64,11 +64,11 @@ class CartProduct {
 
   initActions() {
     const thisCartProduct = this;
-    thisCartProduct.dom.edit.addEventListener("click", function (event) {
+    thisCartProduct.dom.edit.addEventListener('click', function (event) {
       event.preventDefault();
     });
 
-    thisCartProduct.dom.remove.addEventListener("click", function (event) {
+    thisCartProduct.dom.remove.addEventListener('click', function (event) {
       event.preventDefault();
       thisCartProduct.remove();
     });
