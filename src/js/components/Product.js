@@ -1,3 +1,7 @@
+import {templates, select, classNames} from './settins.js';
+import AmountWidget from './components/AmountWidget.js';
+import utils from './utils.js';
+
 class Product {
   constructor(id, data) {
     const thisProduct = this;
