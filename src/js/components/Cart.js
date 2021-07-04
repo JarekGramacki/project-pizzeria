@@ -17,14 +17,10 @@ class Cart {
     thisCart.dom = {};
 
     thisCart.dom.wrapper = element;
-    thisCart.dom.toggleTrigger = element.querySelector(
-      select.cart.toggleTrigger
-    );
+    thisCart.dom.toggleTrigger = element.querySelector(select.cart.toggleTrigger);
     thisCart.dom.productList = element.querySelector(select.cart.productList);
     thisCart.dom.deliveryFee = element.querySelector(select.cart.deliveryFee);
-    thisCart.dom.subTotalPrice = element.querySelector(
-      select.cart.subtotalPrice
-    );
+    thisCart.dom.subTotalPrice = element.querySelector(select.cart.subtotalPrice);
     thisCart.dom.totalPrice = element.querySelectorAll(select.cart.totalPrice);
     thisCart.dom.totalNumber = element.querySelector(select.cart.totalNumber);
     thisCart.dom.form = element.querySelector(select.cart.form);

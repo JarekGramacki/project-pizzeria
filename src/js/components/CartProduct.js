@@ -22,14 +22,10 @@ class CartProduct {
     thisCartProduct.dom = {};
 
     thisCartProduct.dom.wrapper = element;
-    thisCartProduct.dom.amountWidget = element.querySelector(
-      select.cartProduct.amountWidget
-    );
+    thisCartProduct.dom.amountWidget = element.querySelector(select.cartProduct.amountWidget);
     thisCartProduct.dom.price = element.querySelector(select.cartProduct.price);
     thisCartProduct.dom.edit = element.querySelector(select.cartProduct.edit);
-    thisCartProduct.dom.remove = element.querySelector(
-      select.cartProduct.remove
-    );
+    thisCartProduct.dom.remove = element.querySelector(select.cartProduct.remove);
   }
 
   initAmountWidget() {
@@ -40,8 +36,7 @@ class CartProduct {
     );
     thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
-      thisCartProduct.price =
-        thisCartProduct.amount * thisCartProduct.priceSingle;
+      thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
     });
   }
