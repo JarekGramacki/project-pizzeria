@@ -20,7 +20,7 @@ class AmountWidget extends BaseWidget {
     thisWidget.dom.linkDecrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkDecrease);
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
-
+  
   setValue(value) {
     const thisWidget = this;
     const newValue = thisWidget.parseValue(value);
