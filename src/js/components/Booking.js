@@ -33,11 +33,12 @@ class Booking {
 
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
 
-    thisBooking.dom.peopleAmount = element.querySelector(select.booking.peopleAmount);
-    thisBooking.dom.hoursAmount = element.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
+
+    thisBooking.dom.hourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.datePicker = document.querySelector(select.widgets.datePicker.wrapper);
     
-    thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
-    thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
   }
 
   initWidgets(){
@@ -54,16 +55,15 @@ class Booking {
     );
     thisBooking.dom.hoursAmount.addEventListener('updated',function(){});
 
-    
-    thisBooking.datePicker = new DatePicker(
-      thisBooking.dom.datePicker
-    );
-    thisBooking.dom.datePicker.addEventListener('updated',function(){});
-
-    thisBooking.hourPicker = new HourPicker(
+    thisBooking.hourPickerWidget = new HourPicker(
       thisBooking.dom.hourPicker
     );
     thisBooking.dom.hourPicker.addEventListener('updated',function(){});
+
+    thisBooking.datePickerWidget = new DatePicker(
+      thisBooking.dom.datePicker
+    );
+    thisBooking.dom.datePicker.addEventListener('updated',function(){});
   }
 }
 
