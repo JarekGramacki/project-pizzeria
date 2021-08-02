@@ -55,6 +55,8 @@ class Booking {
     );
     thisBooking.dom.hoursAmount.addEventListener('updated',function(){});
 
+
+
     thisBooking.hourPickerWidget = new HourPicker(
       thisBooking.dom.hourPicker
     );
