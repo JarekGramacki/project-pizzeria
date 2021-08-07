@@ -80,19 +80,17 @@ class Cart {
   }
 
   remove(product) {
-    console.log('4. [R] Cart - usuwamy produkt (front+back):', product);
+    //console.log('4. [R] Cart - usuwamy produkt (front+back):', product);
     const thisCart = this;
     const cartContainer = thisCart.dom.productList;
 
-    console.log(
-      '5. [R] Cart - usuwamy produkt z frontendu (ui) / z drzewa dom'
-    );
+    //console.log('5. [R] Cart - usuwamy produkt z frontendu (ui) / z drzewa dom');
     cartContainer.removeChild(product.dom.wrapper);
 
-    console.log('6. [R] Cart - usuwamy produkt z koszyka - z listy obiektów');
+    // console.log('6. [R] Cart - usuwamy produkt z koszyka - z listy obiektów');
     thisCart.products.splice(thisCart.products.indexOf(product), 1);
     thisCart.update();
-  }
+  } 
 
   add(menuProduct) {
     const thisCart = this;
@@ -142,10 +140,10 @@ class Cart {
       }
     }
 
-    console.log('totalPrice', thisCart.totalPrice);
-    console.log('delifery', thisCart.deliveryFee);
-    console.log('subtotal', thisCart.subTotalPrice);
-    console.log('totalnumber', thisCart.totalNumber);
+    // console.log('totalPrice', thisCart.totalPrice);
+    //console.log('delifery', thisCart.deliveryFee);
+    //console.log('subtotal', thisCart.subTotalPrice);
+    //console.log('totalnumber', thisCart.totalNumber);
   }
 }
 

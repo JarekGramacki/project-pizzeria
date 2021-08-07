@@ -42,7 +42,7 @@ class CartProduct {
   }
 
   remove() {
-    console.log('1. [R] CartProduct - kliknieto remove na:', this);
+    //console.log('1. [R] CartProduct - kliknieto remove na:', this);
     const thisCartProduct = this;
 
     const event = new CustomEvent('remove', {
@@ -52,10 +52,7 @@ class CartProduct {
       },
     });
 
-    console.log(
-      '2. [R] CartProduct - wysla event z sobą (ref) w detail.cartProduct:',
-      event
-    );
+    //console.log('2. [R] CartProduct - wysla event z sobą (ref) w detail.cartProduct:',event);
     thisCartProduct.dom.wrapper.dispatchEvent(event);
   }
 

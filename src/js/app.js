@@ -12,7 +12,7 @@ const app = {
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
 
     const idFromHash = window.location.hash.replace('#/', '');
-    console.log('idFromHash', idFromHash); 
+    // console.log('idFromHash', idFromHash); 
 
     let pageMatchingHash = thisApp.pages[0].id;
 
@@ -73,7 +73,7 @@ const app = {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
-        console.log(parsedResponse);
+        //console.log(parsedResponse);
 
         /*save parasedResponse as thisApp.data.products */
         thisApp.data.products = parsedResponse;
