@@ -25,7 +25,7 @@ class HourPicker extends BaseWidget{
   }
 
   parseValue(value){
-    console.log(value, utils.numberToHour(value));
+    
     return utils.numberToHour(value);
   }
 
@@ -35,7 +35,7 @@ class HourPicker extends BaseWidget{
 
   renderValue(){
     const thisWidget = this;
-    console.log('siema', thisWidget.value);
+   
     thisWidget.dom.output.innerHTML = thisWidget.value;
   }
 }
