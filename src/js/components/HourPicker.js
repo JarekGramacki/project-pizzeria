@@ -18,11 +18,14 @@ class HourPicker extends BaseWidget{
     // eslint-disable-next-line no-undef
     rangeSlider.create(thisWidget.dom.input);
     thisWidget.dom.input.addEventListener('input', function(){
+     
       thisWidget.value = thisWidget.dom.input.value;
+      console.log(thisWidget.value, thisWidget.dom.input.value);
     });
   }
 
   parseValue(value){
+    console.log(value, utils.numberToHour(value));
     return utils.numberToHour(value);
   }
 
@@ -32,7 +35,7 @@ class HourPicker extends BaseWidget{
 
   renderValue(){
     const thisWidget = this;
-
+    console.log('siema', thisWidget.value);
     thisWidget.dom.output.innerHTML = thisWidget.value;
   }
 }

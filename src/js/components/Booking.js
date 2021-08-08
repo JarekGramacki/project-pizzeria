@@ -75,10 +75,10 @@ class Booking {
 
   parseData(bookings, eventsCurrent, eventsRepeat){
     const thisBooking = this;
-
+    
     thisBooking.booked = {};
 
-    for(let item of eventsCurrent){
+    for(let item of eventsRepeat){
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
     console.log('thisBooking.booked', thisBooking.booked);
@@ -96,6 +96,7 @@ class Booking {
     if(typeof thisBooking.booked[date][startHour] == 'undefined'){
       thisBooking.booked[date][startHour] = [];
     }
+
 
     thisBooking.booked[date][startHour].push(table);
   }
