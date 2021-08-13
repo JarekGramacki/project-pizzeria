@@ -10,6 +10,7 @@ class Booking {
   constructor(wrapper) {
     const thisBooking = this;
 
+    thisBooking.tableSelected = ''; //przygotowanie wlasciwosci do przechowywania informacji o wybranym stoliku 
     
     thisBooking.render(wrapper);
     thisBooking.initWidgets();
@@ -176,8 +177,18 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-
+    //dostep do diva stolika 
     
+  }
+
+  initTablest(){
+    const thisBooking = this;
+
+    for(let table of thisBooking.dom.tables){
+      table.addEventListener('click', function(event){
+        
+      });
+    } 
   }
 
   initWidgets(){
@@ -204,8 +215,9 @@ class Booking {
     
     
     thisBooking.dom.wrapper.addEventListener('updated',function(){    
-      thisBooking.updateDOM();
+      thisBooking.updateDOM();  
     });
+
   }
 }
 
