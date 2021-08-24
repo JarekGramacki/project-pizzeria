@@ -15,6 +15,7 @@ class Booking {
     thisBooking.render(wrapper);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.initTables();
   }
 
   getData(){
@@ -181,14 +182,35 @@ class Booking {
     
   }
 
-  initTablest(){
+  initTables(){
     const thisBooking = this;
 
     for(let table of thisBooking.dom.tables){
       table.addEventListener('click', function(event){
-        
+
+        /* Remove 'selected' class from any other element than eventTarget */
+        for(let tableId = 0; tableId < thisBooking.dom.tables.length; tableId++){
+          if (thisBooking.dom.tables[tableId] === event.target)
+            continue;
+
+          thisBooking.dom.tables[tableId].classList.remove(classNames.booking.tableSelected);
+          console.log('co to ', thisBooking.dom.tables[tableId] );
+        }
+
+        if(table.classList.contains(classNames.booking.tableBooked)){
+          alert('Ten stolik jest zajęty');
+        }else{
+          table.classList.toggle(classNames.booking.tableSelected);
+          thisBooking.tableSelected = table.getAttribute('data-table');
+        }
       });
-    } 
+    }
+  }
+  resetTables(){
+    const thisBooking = this;
+    for(let table of thisBooking.dom.tables){
+      table.classList.remove(classNames.booking.tableSelected);
+    }
   }
 
   initWidgets(){
@@ -215,7 +237,8 @@ class Booking {
     
     
     thisBooking.dom.wrapper.addEventListener('updated',function(){    
-      thisBooking.updateDOM();  
+      thisBooking.updateDOM();
+      thisBooking.resetTables();  
     });
 
   }
