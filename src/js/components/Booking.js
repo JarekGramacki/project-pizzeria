@@ -178,6 +178,7 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    //console.log('div stolika', thisBooking.dom.tables );
     //dostep do diva stolika 
     
   }
@@ -186,15 +187,19 @@ class Booking {
     const thisBooking = this;
 
     for(let table of thisBooking.dom.tables){
+      //console.log('stolik z div stolika', table);
       table.addEventListener('click', function(event){
 
         /* Remove 'selected' class from any other element than eventTarget */
+        /*do tableId przypisana jest wartosc zero a dalej warunikiem zekonczenia petli jest thisBooking.dom.tables.length czyli 3 bo length ma wartosc 3 nastepnie inkrementacja*/
         for(let tableId = 0; tableId < thisBooking.dom.tables.length; tableId++){
+          //console.log('id stolika', tableId);
+          //console.log('div stolika z length', thisBooking.dom.tables.length);
           if (thisBooking.dom.tables[tableId] === event.target)
             continue;
-
+          //console.log('div stolika z tableId', thisBooking.dom.tables[tableId]);
+          //console.log('event target', event.target);
           thisBooking.dom.tables[tableId].classList.remove(classNames.booking.tableSelected);
-          console.log('co to ', thisBooking.dom.tables[tableId] );
         }
 
         if(table.classList.contains(classNames.booking.tableBooked)){
