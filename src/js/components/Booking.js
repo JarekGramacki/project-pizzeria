@@ -168,19 +168,19 @@ class Booking {
     thisBooking.dom = {};
 
     thisBooking.dom.wrapper = wrapper; 
-
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
-
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
-
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
-
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     //console.log('div stolika', thisBooking.dom.tables );
     //dostep do diva stolika 
-    
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.cart.phone);
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.cart.address);
+    thisBooking.dom.duration = document.querySelector(select.booking.hourInput);
+    thisBooking.dom.ppl = document.querySelector(select.booking.pplInput);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelector(select.booking.starters);
   }
 
   initTables(){
@@ -217,6 +217,31 @@ class Booking {
       table.classList.remove(classNames.booking.tableSelected);
     }
   }
+
+  sendBooking() {
+    const thisBooking = this; 
+
+    const url = settings.db.url + '/' + settings.db.booking;
+
+    const payload = {
+      date : thisBooking.datePicker.value,
+      hour : thisBooking.dom.hourPicker.value,
+      table : parseInt(thisBooking.tableSelected),
+      duration: parseInt(thisBooking.dom.duration.value),
+      ppl: parseInt(thisBooking.dom.ppl.value), 
+      starters : [],
+      phone: parseInt(thisBooking.dom.phone.value),
+      address : thisBooking.dom.address.value,
+    };
+
+    for(let starter of thisBooking.dom.starters){
+      console.log('starter ', starter);
+      if(starter.checked == true){
+        payload.starters.push(starter.value);
+      }
+    }
+  }
+
 
   initWidgets(){
     const thisBooking = this; 
