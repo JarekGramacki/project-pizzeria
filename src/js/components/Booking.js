@@ -16,6 +16,7 @@ class Booking {
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.initTables();
+    thisBooking.initActions();
   }
 
   getData(){
@@ -104,6 +105,15 @@ class Booking {
     thisBooking.updateDOM();
   }
 
+  initActions(){
+    const thisBooking = this;
+    thisBooking.dom.bookingSubmit.addEventListener('click', function(event){
+      event.preventDefault();
+      thisBooking.sendBooking();
+      alert('Rezerwacja udana!');
+    });
+  }
+
   makeBooked(date, hour, duration, table){
     const thisBooking = this;
 
@@ -174,13 +184,14 @@ class Booking {
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.bookingSubmit = document.querySelector(select.booking.formSubmit);
     //console.log('div stolika', thisBooking.dom.tables );
     //dostep do diva stolika 
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.cart.phone);
     thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.cart.address);
     thisBooking.dom.duration = document.querySelector(select.booking.hourInput);
     thisBooking.dom.ppl = document.querySelector(select.booking.pplInput);
-    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelector(select.booking.starters);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
   }
 
   initTables(){
@@ -233,13 +244,23 @@ class Booking {
       phone: parseInt(thisBooking.dom.phone.value),
       address : thisBooking.dom.address.value,
     };
-
+    console.log('payload ',payload);
     for(let starter of thisBooking.dom.starters){
-      console.log('starter ', starter);
       if(starter.checked == true){
         payload.starters.push(starter.value);
+        
       }
     }
+  
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+    fetch(url, options);
+      
   }
 
 
