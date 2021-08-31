@@ -3,8 +3,10 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    comment: '#template-comment'
   },
   containerOf: {
+    homeComments: '#home-comments',
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
@@ -109,6 +111,7 @@ export const settings = {
     order: 'order',
     booking: 'bookings',
     event: 'events',
+    comments: 'comments',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
@@ -135,4 +138,6 @@ export const templates = {
   ),
   bookingWidget: Handlebars.compile(
     document.querySelector(select.templateOf.bookingWidget).innerHTML),
+  comment: Handlebars.compile(
+    document.querySelector(select.templateOf.comment).innerHTML),
 };

@@ -2,6 +2,7 @@ import { settings, select, classNames } from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
+import Comment from './components/Comment.js';
 
 const app = {
   initPages: function (){
@@ -80,7 +81,32 @@ const app = {
         /* execute initMenu method */
         thisApp.initMenu();
       });
-   
+      
+    const comurl = settings.db.url + '/' + settings.db.comments;
+
+    fetch(comurl)
+      .then(function (responseObj) {
+        return responseObj.json();
+      })
+      .then(function (jsonComments) {        
+        thisApp.data.comments = jsonComments;
+        thisApp.initComments();
+      });
+  },
+
+  initComments: function(){
+    const thisApp = this;
+
+    for (let comment in thisApp.data.comments) {
+      new Comment(thisApp.data.comments[comment]);
+    }
+
+    var elem = document.querySelector(select.containerOf.homeComments);
+    // eslint-disable-next-line no-undef
+    new Flickity(elem, {         
+      cellAlign: 'center',
+      contain: false
+    });
   },
 
   initMenu: function () {
@@ -117,7 +143,7 @@ const app = {
 
     thisApp.initPages();
     thisApp.initData();
-    thisApp.initBooking();
+    thisApp.initBooking();    
   },
 
   initBooking: function(){
