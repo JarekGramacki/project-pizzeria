@@ -67,22 +67,31 @@
 
   <div id="pages">
     <section id="home">
-        <div id="home-top"></div>
+      <div class="home-wrapper container"></div>
+        <div id="home-top">
+          <h2>order online</h2>
+          <h2>book a table</h2>
+          <h2>opening hours</h2>
+        </div>
         <div id="home-comments"></div>
         <div id="home-gallery"></div>
     </section>
+
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
+    
     <section id="booking">
       <div class="booking-wrapper container"></div>
     </section>
   </div>
 
   <script id="template-comment" type="text/x-handlebars-template">
-    <div class="carousel-cell comment">
-      <div class="comment-text">{{ text }}</div>
-      <div class="comment-name">{{ name }}</div>
+    <div class="home-widget">
+      <div class="carousel-cell comment">
+        <div class="comment-text">{{ text }}</div>
+        <div class="comment-name">{{ name }}</div>
+      </div>
     </div>
   </script>
 
@@ -109,7 +118,7 @@
       </div>
       <ul class="cart__action-buttons no-spacing">
         <li><a href="#edit">Edit<i class="fas fa-pencil-alt"></i></a></li>
-        <li><a href="#remove">Remove<i class="fas fa-trash-alt"></i></a></li>
+        <li><a href="#remove">Remove<i class="fas fa-trash-alt"></i></a></li> 
       </ul>
     </li>
   </script>
