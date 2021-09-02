@@ -6,6 +6,7 @@ export const select = {
     comment: '#template-comment'
   },
   containerOf: {
+    homeWidget:'.home-widget',
     homeComments: '#home-comments',
     menu: '#product-list',
     cart: '#cart',
@@ -138,6 +139,7 @@ export const templates = {
   ),
   bookingWidget: Handlebars.compile(
     document.querySelector(select.templateOf.bookingWidget).innerHTML),
+
   comment: Handlebars.compile(
     document.querySelector(select.templateOf.comment).innerHTML),
 };

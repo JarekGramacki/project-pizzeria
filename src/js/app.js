@@ -1,8 +1,7 @@
-import { settings, select, classNames } from './settings.js';
+import { settings, select, classNames, templates } from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
-import Comment from './components/Comment.js';
 
 const app = {
   initPages: function (){
@@ -97,11 +96,14 @@ const app = {
   initComments: function(){
     const thisApp = this;
 
-    for (let comment in thisApp.data.comments) {
-      new Comment(thisApp.data.comments[comment]);
+    let html = '';
+
+    for (let comment of thisApp.data.comments) {
+      html += templates.comment(comment);
     }
 
     var elem = document.querySelector(select.containerOf.homeComments);
+    elem.innerHTML = html;
     // eslint-disable-next-line no-undef
     new Flickity(elem, {         
       cellAlign: 'center',
