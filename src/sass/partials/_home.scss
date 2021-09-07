@@ -1,11 +1,23 @@
 .home-wrapper {
-    margin: ($base-size * 3.5) auto;
-    padding: ($base-size * 6) ($base-size * 4);
-    background: $color-light;
-    border-bottom: 1px solid lighten($color-dark, 70%);
-    border-radius: $radius;
-  }
+  margin: ($base-size * 3.5) auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
+
+#home-top {
+  border: solid rgb(114, 32, 36);
+}
 
 .page-links {
-    border: solid;
+  border: solid green;
+  
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
 }
