@@ -6,15 +6,6 @@
   
 }
 
-#home-top {
- 
-}
-
-.page-links {
-  
-  
-}
-
 .row {
   display: flex;
   flex-direction: row;
@@ -35,7 +26,21 @@
 .opening{
   width: 605px;
   margin-top: 5px;
-  background-color: $color-main;
-   
+  background-color: $color-main;  
 } 
 
+.comments{
+  border: solid red;
+}
+
+.photo-comments img{
+  border: solid green;
+  width: 200px;
+}
+
+#home-comments{
+  border: solid blue;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+}
