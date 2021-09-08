@@ -3,15 +3,15 @@
   padding: ($base-size * 6) ($base-size * 4);
   background: $color-light;
   border-bottom: 1px solid lighten($color-dark, 70%);
-  border-radius: $radius;
+  
 }
 
 #home-top {
-  border: solid rgb(114, 32, 36);
+ 
 }
 
 .page-links {
-  border: solid green;
+  
   
 }
 
@@ -21,3 +21,18 @@
   justify-content: center;
   justify-content: space-around;
 }
+
+.btn {
+  width: 300px;
+  height: 90px;
+  margin-right: 5px;
+  border: none;
+  border-radius: $radius;
+}
+
+.opening{
+  width: 605px;
+  margin-top: 5px;
+  background-color: $color-main; 
+  
+} 
