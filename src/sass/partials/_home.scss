@@ -31,16 +31,20 @@
 
 .comments{
   border: solid red;
+  display: flex;
+  margin-top: 70px;
 }
 
 .photo-comments img{
   border: solid green;
   width: 200px;
+  height: 200px;
 }
 
 #home-comments{
   border: solid blue;
-  width: 200px;
-  height: 100px;
+  width: 380px;
+  height: 200px;
   position: absolute;
+  right: 530px;
 }
