@@ -105,10 +105,15 @@ const app = {
     var elem = document.querySelector(select.containerOf.homeComments);
     elem.innerHTML = html;
     // eslint-disable-next-line no-undef
-    new Flickity(elem, {         
+    new Flickity(elem, {  
       cellAlign: 'center',
-      contain: false
-    });
+      prevNextButtons: false,
+      contain: false,
+      wrapAround: true,
+      setGallerySize: false,
+      percentPosition: false,
+      watchCSS: false,
+      fade: false});
   },
 
   initMenu: function () {
