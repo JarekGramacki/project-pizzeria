@@ -14,7 +14,7 @@
 
 /*page links */
 
-.btn {
+ .btn {
   width: 300px;
   height: 130px;
   margin-right: 5px;
@@ -23,7 +23,36 @@
   font-family: $font-header;
   color: $color-light;
   font-size: 15px;
-  background-image: url(src\assets\pizza-1.jpg);
+  
+}
+
+.page {
+  background-position: center;
+  background-size: cover;
+}
+
+.picture-1{
+  background-image: url("/assets/pizza-1.jpg");
+
+}
+
+.picture-2{
+  background-image: url("/assets/pizza-2.jpg");
+  
+}
+
+.btn h2{
+  color: white;
+  padding: 47px;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+ 
+}
+
+.btn a{
+  text-decoration: none;
 }
 
 .opening{
@@ -44,9 +73,11 @@
   width: 100%; /* full width */
   height: 100%; /* height of carousel */  
 }
+
 .photo-comments {
   float: left;
 }
+
 .photo-comments img{  
   width: 200px;
   height: 200px; 
@@ -55,7 +86,6 @@
 }
 
 .flickity-slider{
-
   height: 200px;
   right: 530px;
 }
@@ -86,4 +116,13 @@
   height: 300px;
   object-fit: cover;
   object-position: 15% 100%;
+}
+
+/*footer*/
+.footer-home a{
+  color: $color-main;
+}
+
+.footer-home{
+  margin-top: 30px;
 }
