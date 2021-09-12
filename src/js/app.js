@@ -15,7 +15,7 @@ const app = {
     // console.log('idFromHash', idFromHash); 
 
     let pageMatchingHash = thisApp.pages[0].id;
-
+    console.log('page',pageMatchingHash, idFromHash);
     for(let page of thisApp.pages){
       if (page.id == idFromHash){
         pageMatchingHash = page.id;
@@ -35,7 +35,7 @@ const app = {
 
         /* run thisApp.activatePage with that id */
         thisApp.activatePage(id); 
-
+        console.log(clickedElement, id);
         /* change URL hash */
         window.location.hash = '#/' + id;
       });
@@ -49,6 +49,7 @@ const app = {
     const thisApp = this;
 
     /* add class "active" to matching pages, remove from non-matching */
+    console.log('pages active', thisApp.pages);
     for(let page of thisApp.pages){
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     } 
