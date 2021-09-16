@@ -43,8 +43,8 @@
 
 .btn h2{
   color: white;
-  padding: 47px;
-  margin: 0;
+  padding: 2px;
+  margin-top: 20px;
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -60,6 +60,31 @@
   margin-top: 5px;
   background-color: $color-main;  
 } 
+
+.paragraph {
+  white-space: nowrap; 
+  color: white;
+  font-size: 16px;
+  overflow: hidden;
+  top: 50px;
+  margin-top: 10px;
+  
+}
+
+.btn:hover .overlay {
+  height: 100%;
+}
+
+.overlay {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .8s ease;
+}
 
 /*comments */
 
