@@ -108,6 +108,7 @@
   height: 200px; 
   object-fit: cover;
   object-position: 50% 100%; 
+  border-radius: $radius;
 }
 
 .flickity-slider{
@@ -146,8 +147,18 @@
 
 img:hover {
   opacity: 0.5;
-  
 }
+
+.links-gallery{
+  position: absolute;
+  font-size: 40px;
+  z-index: 1;
+  top: 133%;
+  left: 141px;
+}
+
+
+
 
 /*footer*/
 .footer-home a{
