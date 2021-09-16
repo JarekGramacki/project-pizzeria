@@ -141,6 +141,12 @@
   height: 300px;
   object-fit: cover;
   object-position: 15% 100%;
+  color: black;
+}
+
+img:hover {
+  opacity: 0.5;
+  
 }
 
 /*footer*/
