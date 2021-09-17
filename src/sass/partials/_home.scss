@@ -163,6 +163,7 @@
 .col:hover img{
   opacity: 0.5;
   filter: brightness(0.5);
+  transition: 0.5s;
 }
 
 .col:hover .links-heart{
