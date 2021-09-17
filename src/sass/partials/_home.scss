@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  
 }
 
 /*page links */
@@ -126,6 +127,7 @@
 
 #home-gallery {
   margin-top: 100px;
+  opacity: 1;
 }
 
 #home-gallery img {
@@ -142,21 +144,51 @@
   height: 300px;
   object-fit: cover;
   object-position: 15% 100%;
-  color: black;
+  
 }
 
-img:hover {
+#home-gallery img:hover {
   opacity: 0.5;
-  
 }
 
-.links-gallery{
-  
+.links-heart{
+  height: 0px;
   position: relative;
-  font-size: 40px;
+  font-size: 30px;
+  top: -62%;
+  left: 68px;
   z-index: 1;
-  top: -49%;
-  left: 75px;
+}
+
+.links-heart i:hover{
+  color: $color-main;
+}
+
+.links-share{
+  height: 0px;
+  position: relative;
+  font-size: 30px;
+  top: -63%;
+  left: 111px;
+  z-index: 1;
+}
+
+.links-share i:hover{
+  color: $color-main;
+}
+
+.links-heart i {
+  color: white;
+  margin-right: 11px;
+}
+
+.links-share i {
+  color: white;
+  margin-right: 11px;
+}
+
+#home-galerry.col{
+  width:200px;
 }
 
 /*footer*/
