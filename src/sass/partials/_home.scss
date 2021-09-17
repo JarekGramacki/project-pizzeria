@@ -157,7 +157,15 @@
   font-size: 30px;
   top: -62%;
   left: 68px;
-  z-index: 1;
+  opacity: 0;
+}
+
+.col:hover img{
+  opacity: 0.5;
+}
+
+.col:hover .links-heart{
+  opacity: 1;
 }
 
 .links-heart i:hover{
@@ -170,7 +178,11 @@
   font-size: 30px;
   top: -63%;
   left: 111px;
-  z-index: 1;
+  opacity: 0;
+}
+
+.col:hover .links-share{
+  opacity: 1;
 }
 
 .links-share i:hover{
