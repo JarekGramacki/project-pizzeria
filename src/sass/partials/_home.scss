@@ -147,18 +147,17 @@
 
 img:hover {
   opacity: 0.5;
+  
 }
 
 .links-gallery{
-  position: absolute;
+  
+  position: relative;
   font-size: 40px;
   z-index: 1;
-  top: 133%;
-  left: 141px;
+  top: -49%;
+  left: 75px;
 }
-
-
-
 
 /*footer*/
 .footer-home a{
