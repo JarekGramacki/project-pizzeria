@@ -3,14 +3,12 @@
   padding: ($base-size * 6) ($base-size * 4);
   background: $color-light;
   border-bottom: 1px solid lighten($color-dark, 70%);
-  
 }
 
 .row {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  
 }
 
 /*page links */
@@ -24,7 +22,6 @@
   font-family: $font-header;
   color: $color-light;
   font-size: 15px;
-  
 }
 
 .page {
@@ -32,44 +29,40 @@
   background-size: cover;
 }
 
-.picture-1{
+.picture-1 {
   background-image: url("/assets/pizza-1.jpg");
-
 }
 
-.picture-2{
+.picture-2 {
   background-image: url("/assets/pizza-2.jpg");
-  
 }
 
-.btn h2{
+.btn h2 {
   color: white;
   padding: 2px;
   margin-top: 20px;
   cursor: pointer;
   display: inline-block;
   position: relative;
- 
 }
 
-.btn a{
+.btn a {
   text-decoration: none;
 }
 
-.opening{
+.opening {
   width: 605px;
   margin-top: 5px;
-  background-color: $color-main;  
-} 
+  background-color: $color-main;
+}
 
 .paragraph {
-  white-space: nowrap; 
+  white-space: nowrap;
   color: white;
   font-size: 16px;
   overflow: hidden;
   top: 50px;
   margin-top: 10px;
-  
 }
 
 .btn:hover .overlay {
@@ -84,7 +77,7 @@
   overflow: hidden;
   width: 100%;
   height: 0;
-  transition: .8s ease;
+  transition: 0.8s ease;
 }
 
 /*comments */
@@ -97,22 +90,22 @@
 
 .carousel-cell {
   width: 100%; /* full width */
-  height: 100%; /* height of carousel */  
+  height: 100%; /* height of carousel */
 }
 
 .photo-comments {
   float: left;
 }
 
-.photo-comments img{  
+.photo-comments img {
   width: 200px;
-  height: 200px; 
+  height: 200px;
   object-fit: cover;
-  object-position: 50% 100%; 
+  object-position: 50% 100%;
   border-radius: $radius;
 }
 
-.flickity-slider{
+.flickity-slider {
   height: 200px;
   right: 530px;
 }
@@ -139,19 +132,18 @@
   object-position: 50% 100%;
 }
 
-.img{
+.img {
   width: 200px;
   height: 300px;
   object-fit: cover;
   object-position: 15% 100%;
-  
 }
 
 #home-gallery img:hover {
   opacity: 0.5;
 }
 
-.links-heart{
+.links-heart {
   height: 0px;
   position: relative;
   font-size: 30px;
@@ -160,21 +152,21 @@
   opacity: 0;
 }
 
-.col:hover img{
+.col:hover img {
   opacity: 0.5;
   filter: brightness(0.5);
   transition: 0.5s;
 }
 
-.col:hover .links-heart{
+.col:hover .links-heart {
   opacity: 1;
 }
 
-.links-heart i:hover{
+.links-heart i:hover {
   color: $color-main;
 }
 
-.links-share{
+.links-share {
   height: 0px;
   position: relative;
   font-size: 30px;
@@ -183,11 +175,11 @@
   opacity: 0;
 }
 
-.col:hover .links-share{
+.col:hover .links-share {
   opacity: 1;
 }
 
-.links-share i:hover{
+.links-share i:hover {
   color: $color-main;
 }
 
@@ -201,15 +193,15 @@
   margin-right: 11px;
 }
 
-#home-galerry.col{
-  width:200px;
+#home-galerry.col {
+  width: 200px;
 }
 
 /*footer*/
-.footer-home a{
+.footer-home a {
   color: $color-main;
 }
 
-.footer-home{
+.footer-home {
   margin-top: 30px;
 }
